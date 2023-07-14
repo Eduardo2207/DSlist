@@ -11,31 +11,30 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_game")
 public class Game {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String title;
 	
 	@Column(name = "game_year")
-	private String year;
+	private Integer year;
 	private String genre;
 	private String platforms;
 	private Double score;
 	private String imgUrl;
 	
 	@Column(columnDefinition = "TEXT")
-	private String ShortDescription;
-	
+	private String shortDescription;
+
 	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
-	public Game() {	
-	}
-
-	public Game(long id, String title, String year, String genre, String platforms, Double score, String imgUrl,
-			String shortDrescription, String longDescription) {
-		super();
+    public Game() {
+    }
+    
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
+			String shortDescription, String longDescription) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -43,15 +42,15 @@ public class Game {
 		this.platforms = platforms;
 		this.score = score;
 		this.imgUrl = imgUrl;
-		ShortDescription = shortDrescription;
-		this.longDescription = longDescription;
+		this.shortDescription = shortDescription;
+		this.longDescription = longDescription;		
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -63,11 +62,11 @@ public class Game {
 		this.title = title;
 	}
 
-	public String getYear() {
+	public Integer getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
@@ -104,11 +103,11 @@ public class Game {
 	}
 
 	public String getShortDescription() {
-		return ShortDescription;
+		return shortDescription;
 	}
 
 	public void setShortDescription(String shortDescription) {
-		ShortDescription = shortDescription;
+		this.shortDescription = shortDescription;
 	}
 
 	public String getLongDescription() {
@@ -133,8 +132,7 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		return id == other.id;
+		return Objects.equals(id, other.id);
 	}
-	
-	
 }
+	
